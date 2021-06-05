@@ -7,6 +7,7 @@
         "uses": "actions/checkout@v2"
       - "env":
           "GITHUB_TOKEN": "${{ secrets.GITHUB_TOKEN }}"
+          "REQUIREMENTS": "requirements.txt"
         "name": "Deploy docs"
         "uses": "mhausenblas/mkdocs-deploy-gh-pages@master"
 "name": "Publish docs via GitHub Pages"

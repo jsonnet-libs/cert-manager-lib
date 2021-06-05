@@ -1,0 +1,13 @@
+# For mkdocs
+
+# Use newer mkdocs so indexing can be done on titles only
+git+https://github.com/mkdocs/mkdocs.git@57b5ccd7d63e5b7067d37d0433111e9a5278fb6d
+
+# Exclude search to limit search to a subset
+mkdocs-exclude-search>=0.5
+
+# From https://github.com/squidfunk/mkdocs-material/blob/08e8525/requirements.txt
+Pygments>=2.4
+markdown>=3.2
+pymdown-extensions>=7.0
+mkdocs-material-extensions>=1.0

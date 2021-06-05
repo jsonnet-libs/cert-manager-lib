@@ -9,7 +9,7 @@
       "indexing": "titles"
       "min_search_length": 2
       "prebuild_index": true
-      "separator": "[\\s\\-]+"
+      "separator": "[\\s\\-\\.]+"
   - "minify":
       "minify_html": true
 "repo_name": "jsonnet-libs/cert-manager-lib"

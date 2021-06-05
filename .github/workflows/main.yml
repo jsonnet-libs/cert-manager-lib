@@ -9,7 +9,7 @@
           "GITHUB_TOKEN": "${{ secrets.GITHUB_TOKEN }}"
           "REQUIREMENTS": "requirements.txt"
         "name": "Deploy docs"
-        "uses": "mhausenblas/mkdocs-deploy-gh-pages@master"
+        "uses": "mhausenblas/mkdocs-deploy-gh-pages@nomaterial"
 "name": "Publish docs via GitHub Pages"
 "on":
   "push":

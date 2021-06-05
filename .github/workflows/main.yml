@@ -5,6 +5,8 @@
     "steps":
       - "name": "Checkout main"
         "uses": "actions/checkout@v2"
+        "with":
+          "fetch-depth": 0
       - "env":
           "GITHUB_TOKEN": "${{ secrets.GITHUB_TOKEN }}"
           "REQUIREMENTS": "requirements.txt"

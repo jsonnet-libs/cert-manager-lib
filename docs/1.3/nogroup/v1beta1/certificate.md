@@ -443,7 +443,7 @@ Usages is the set of x509 usages that are requested for the certificate. Default
 
 ## obj spec.issuerRef
 
-
+IssuerRef is a reference to the issuer for this certificate. If the `kind` field is not set, or set to `Issuer`, an Issuer resource with the given name in the same namespace as the Certificate will be used. If the `kind` field is set to `ClusterIssuer`, a ClusterIssuer with the provided name will be used. The `name` field in this stanza is required at all times.
 
 ### fn spec.issuerRef.withGroup
 
@@ -471,11 +471,11 @@ Name of the resource being referred to.
 
 ## obj spec.keystores
 
-
+Keystores configures additional keystore output formats stored in the `secretName` Secret resource.
 
 ## obj spec.keystores.jks
 
-
+JKS configures options for storing a JKS keystore in the `spec.secretName` Secret resource.
 
 ### fn spec.keystores.jks.withCreate
 
@@ -519,7 +519,7 @@ Create enables PKCS12 keystore creation for the Certificate. If true, a file nam
 
 ## obj spec.keystores.pkcs12.passwordSecretRef
 
-
+PasswordSecretRef is a reference to a key in a Secret resource containing the password used to encrypt the PKCS12 keystore.
 
 ### fn spec.keystores.pkcs12.passwordSecretRef.withKey
 
@@ -539,7 +539,7 @@ Name of the resource being referred to. More info: https://kubernetes.io/docs/co
 
 ## obj spec.privateKey
 
-
+Options to control private keys used for the Certificate.
 
 ### fn spec.privateKey.withAlgorithm
 
@@ -575,7 +575,7 @@ Size is the key bit size of the corresponding private key for this certificate. 
 
 ## obj spec.subject
 
-
+Full X509 name specification (https://golang.org/pkg/crypto/x509/pkix/#Name).
 
 ### fn spec.subject.withCountries
 

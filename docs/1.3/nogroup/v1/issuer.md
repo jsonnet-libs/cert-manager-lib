@@ -303,7 +303,7 @@ Desired state of the Issuer resource.
 
 ## obj spec.acme
 
-
+ACME configures this issuer to communicate with a RFC8555 (ACME) server to obtain signed x509 certificates.
 
 ### fn spec.acme.withDisableAccountKeyGeneration
 
@@ -503,7 +503,7 @@ The CRL distribution points is an X.509 v3 certificate extension which identifie
 
 ## obj spec.vault
 
-
+Vault configures this issuer to sign certificates using a HashiCorp Vault PKI backend.
 
 ### fn spec.vault.withCaBundle
 
@@ -583,7 +583,7 @@ Name of the resource being referred to. More info: https://kubernetes.io/docs/co
 
 ## obj spec.vault.auth.kubernetes
 
-
+Kubernetes authenticates with Vault by passing the ServiceAccount token stored in the named Secret resource to the Vault server.
 
 ### fn spec.vault.auth.kubernetes.withMountPath
 
@@ -623,7 +623,7 @@ Name of the resource being referred to. More info: https://kubernetes.io/docs/co
 
 ## obj spec.vault.auth.tokenSecretRef
 
-
+TokenSecretRef authenticates with Vault by presenting a token.
 
 ### fn spec.vault.auth.tokenSecretRef.withKey
 
@@ -667,7 +667,7 @@ URL is the base URL for Venafi Cloud. Defaults to "https://api.venafi.cloud/v1".
 
 ## obj spec.venafi.cloud.apiTokenSecretRef
 
-
+APITokenSecretRef is a secret key selector for the Venafi Cloud API token.
 
 ### fn spec.venafi.cloud.apiTokenSecretRef.withKey
 
@@ -707,7 +707,7 @@ URL is the base URL for the vedsdk endpoint of the Venafi TPP instance, for exam
 
 ## obj spec.venafi.tpp.credentialsRef
 
-
+CredentialsRef is a reference to a Secret containing the username and password for the TPP server. The secret must contain two keys, 'username' and 'password'.
 
 ### fn spec.venafi.tpp.credentialsRef.withName
 

@@ -471,11 +471,11 @@ Name of the resource being referred to.
 
 ## obj spec.keystores
 
-
+Keystores configures additional keystore output formats stored in the `secretName` Secret resource.
 
 ## obj spec.keystores.jks
 
-
+JKS configures options for storing a JKS keystore in the `spec.secretName` Secret resource.
 
 ### fn spec.keystores.jks.withCreate
 
@@ -519,7 +519,7 @@ Create enables PKCS12 keystore creation for the Certificate. If true, a file nam
 
 ## obj spec.keystores.pkcs12.passwordSecretRef
 
-
+PasswordSecretRef is a reference to a key in a Secret resource containing the password used to encrypt the PKCS12 keystore.
 
 ### fn spec.keystores.pkcs12.passwordSecretRef.withKey
 
@@ -539,7 +539,7 @@ Name of the resource being referred to. More info: https://kubernetes.io/docs/co
 
 ## obj spec.privateKey
 
-
+Options to control private keys used for the Certificate.
 
 ### fn spec.privateKey.withAlgorithm
 

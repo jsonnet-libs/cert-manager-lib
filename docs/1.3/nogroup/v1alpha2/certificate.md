@@ -517,7 +517,7 @@ Keystores configures additional keystore output formats stored in the `secretNam
 
 ## obj spec.keystores.jks
 
-
+JKS configures options for storing a JKS keystore in the `spec.secretName` Secret resource.
 
 ### fn spec.keystores.jks.withCreate
 
@@ -549,7 +549,7 @@ Name of the resource being referred to. More info: https://kubernetes.io/docs/co
 
 ## obj spec.keystores.pkcs12
 
-
+PKCS12 configures options for storing a PKCS12 keystore in the `spec.secretName` Secret resource.
 
 ### fn spec.keystores.pkcs12.withCreate
 
@@ -561,7 +561,7 @@ Create enables PKCS12 keystore creation for the Certificate. If true, a file nam
 
 ## obj spec.keystores.pkcs12.passwordSecretRef
 
-
+PasswordSecretRef is a reference to a key in a Secret resource containing the password used to encrypt the PKCS12 keystore.
 
 ### fn spec.keystores.pkcs12.passwordSecretRef.withKey
 

@@ -511,7 +511,7 @@ Create enables JKS keystore creation for the Certificate. If true, a file named 
 
 ## obj spec.keystores.jks.passwordSecretRef
 
-
+PasswordSecretRef is a reference to a key in a Secret resource containing the password used to encrypt the JKS keystore.
 
 ### fn spec.keystores.jks.passwordSecretRef.withKey
 
@@ -543,7 +543,7 @@ Create enables PKCS12 keystore creation for the Certificate. If true, a file nam
 
 ## obj spec.keystores.pkcs12.passwordSecretRef
 
-
+PasswordSecretRef is a reference to a key in a Secret resource containing the password used to encrypt the PKCS12 keystore.
 
 ### fn spec.keystores.pkcs12.passwordSecretRef.withKey
 

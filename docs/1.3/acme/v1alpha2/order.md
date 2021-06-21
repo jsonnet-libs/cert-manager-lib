@@ -314,7 +314,7 @@ IPAddresses is a list of IP addresses that should be included as part of the Ord
 
 ## obj spec.issuerRef
 
-
+IssuerRef references a properly configured ACME-type Issuer which should be used to create this Order. If the Issuer does not exist, processing will be retried. If the Issuer is not an 'ACME' Issuer, an error will be returned and the Order will be marked as failed.
 
 ### fn spec.issuerRef.withGroup
 

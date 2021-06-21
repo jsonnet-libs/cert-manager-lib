@@ -303,7 +303,7 @@ Desired state of the Issuer resource.
 
 ## obj spec.acme
 
-
+ACME configures this issuer to communicate with a RFC8555 (ACME) server to obtain signed x509 certificates.
 
 ### fn spec.acme.withDisableAccountKeyGeneration
 
@@ -373,7 +373,7 @@ Solvers is a list of challenge solvers that will be used to solve ACME challenge
 
 ## obj spec.acme.externalAccountBinding
 
-
+ExternalAccountBinding is a reference to a CA external account of the ACME server. If set, upon registration cert-manager will attempt to associate the given external account credentials with the registered ACME account.
 
 ### fn spec.acme.externalAccountBinding.withKeyAlgorithm
 
@@ -393,7 +393,7 @@ keyID is the ID of the CA key that the External Account is bound to.
 
 ## obj spec.acme.externalAccountBinding.keySecretRef
 
-
+keySecretRef is a Secret Key Selector referencing a data item in a Kubernetes Secret which holds the symmetric MAC key of the External Account Binding. The `key` is the index string that is paired with the key data in the Secret and should not be confused with the key data itself, or indeed with the External Account Binding keyID above. The secret key stored in the Secret **must** be un-padded, base64 URL encoded data.
 
 ### fn spec.acme.externalAccountBinding.keySecretRef.withKey
 
@@ -433,7 +433,7 @@ Name of the resource being referred to. More info: https://kubernetes.io/docs/co
 
 ## obj spec.ca
 
-
+CA configures this issuer to sign certificates using a signing CA keypair stored in a Secret resource. This is used to build internal PKIs that are managed by cert-manager.
 
 ### fn spec.ca.withCrlDistributionPoints
 
@@ -481,7 +481,7 @@ SecretName is the name of the secret used to sign Certificates issued by this Is
 
 ## obj spec.selfSigned
 
-
+SelfSigned configures this issuer to 'self sign' certificates using the private key used to create the CertificateRequest object.
 
 ### fn spec.selfSigned.withCrlDistributionPoints
 
@@ -503,7 +503,7 @@ The CRL distribution points is an X.509 v3 certificate extension which identifie
 
 ## obj spec.vault
 
-
+Vault configures this issuer to sign certificates using a HashiCorp Vault PKI backend.
 
 ### fn spec.vault.withCaBundle
 
@@ -543,7 +543,7 @@ Auth configures how cert-manager authenticates with the Vault server.
 
 ## obj spec.vault.auth.appRole
 
-
+AppRole authenticates with Vault using the App Role auth mechanism, with the role and secret stored in a Kubernetes Secret resource.
 
 ### fn spec.vault.auth.appRole.withPath
 
@@ -563,7 +563,7 @@ RoleID configured in the App Role authentication backend when setting up the aut
 
 ## obj spec.vault.auth.appRole.secretRef
 
-
+Reference to a key in a Secret that contains the App Role secret used to authenticate with Vault. The `key` field must be specified and denotes which entry within the Secret resource is used as the app role secret.
 
 ### fn spec.vault.auth.appRole.secretRef.withKey
 
@@ -583,7 +583,7 @@ Name of the resource being referred to. More info: https://kubernetes.io/docs/co
 
 ## obj spec.vault.auth.kubernetes
 
-
+Kubernetes authenticates with Vault by passing the ServiceAccount token stored in the named Secret resource to the Vault server.
 
 ### fn spec.vault.auth.kubernetes.withMountPath
 
@@ -603,7 +603,7 @@ A required field containing the Vault Role to assume. A Role binds a Kubernetes 
 
 ## obj spec.vault.auth.kubernetes.secretRef
 
-
+The required Secret field containing a Kubernetes ServiceAccount JWT used for authenticating with Vault. Use of 'ambient credentials' is not supported.
 
 ### fn spec.vault.auth.kubernetes.secretRef.withKey
 
@@ -623,7 +623,7 @@ Name of the resource being referred to. More info: https://kubernetes.io/docs/co
 
 ## obj spec.vault.auth.tokenSecretRef
 
-
+TokenSecretRef authenticates with Vault by presenting a token.
 
 ### fn spec.vault.auth.tokenSecretRef.withKey
 
@@ -643,7 +643,7 @@ Name of the resource being referred to. More info: https://kubernetes.io/docs/co
 
 ## obj spec.venafi
 
-
+Venafi configures this issuer to sign certificates using a Venafi TPP or Venafi Cloud policy zone.
 
 ### fn spec.venafi.withZone
 
@@ -655,7 +655,7 @@ Zone is the Venafi Policy Zone to use for this issuer. All requests made to the 
 
 ## obj spec.venafi.cloud
 
-
+Cloud specifies the Venafi cloud configuration settings. Only one of TPP or Cloud may be specified.
 
 ### fn spec.venafi.cloud.withUrl
 
@@ -667,7 +667,7 @@ URL is the base URL for Venafi Cloud. Defaults to "https://api.venafi.cloud/v1".
 
 ## obj spec.venafi.cloud.apiTokenSecretRef
 
-
+APITokenSecretRef is a secret key selector for the Venafi Cloud API token.
 
 ### fn spec.venafi.cloud.apiTokenSecretRef.withKey
 
@@ -687,7 +687,7 @@ Name of the resource being referred to. More info: https://kubernetes.io/docs/co
 
 ## obj spec.venafi.tpp
 
-
+TPP specifies Trust Protection Platform configuration settings. Only one of TPP or Cloud may be specified.
 
 ### fn spec.venafi.tpp.withCaBundle
 
@@ -707,7 +707,7 @@ URL is the base URL for the vedsdk endpoint of the Venafi TPP instance, for exam
 
 ## obj spec.venafi.tpp.credentialsRef
 
-
+CredentialsRef is a reference to a Secret containing the username and password for the TPP server. The secret must contain two keys, 'username' and 'password'.
 
 ### fn spec.venafi.tpp.credentialsRef.withName
 

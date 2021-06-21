@@ -433,7 +433,7 @@ Name of the resource being referred to. More info: https://kubernetes.io/docs/co
 
 ## obj spec.ca
 
-
+CA configures this issuer to sign certificates using a signing CA keypair stored in a Secret resource. This is used to build internal PKIs that are managed by cert-manager.
 
 ### fn spec.ca.withCrlDistributionPoints
 
@@ -543,7 +543,7 @@ Auth configures how cert-manager authenticates with the Vault server.
 
 ## obj spec.vault.auth.appRole
 
-
+AppRole authenticates with Vault using the App Role auth mechanism, with the role and secret stored in a Kubernetes Secret resource.
 
 ### fn spec.vault.auth.appRole.withPath
 
@@ -563,7 +563,7 @@ RoleID configured in the App Role authentication backend when setting up the aut
 
 ## obj spec.vault.auth.appRole.secretRef
 
-
+Reference to a key in a Secret that contains the App Role secret used to authenticate with Vault. The `key` field must be specified and denotes which entry within the Secret resource is used as the app role secret.
 
 ### fn spec.vault.auth.appRole.secretRef.withKey
 
@@ -583,7 +583,7 @@ Name of the resource being referred to. More info: https://kubernetes.io/docs/co
 
 ## obj spec.vault.auth.kubernetes
 
-
+Kubernetes authenticates with Vault by passing the ServiceAccount token stored in the named Secret resource to the Vault server.
 
 ### fn spec.vault.auth.kubernetes.withMountPath
 
@@ -603,7 +603,7 @@ A required field containing the Vault Role to assume. A Role binds a Kubernetes 
 
 ## obj spec.vault.auth.kubernetes.secretRef
 
-
+The required Secret field containing a Kubernetes ServiceAccount JWT used for authenticating with Vault. Use of 'ambient credentials' is not supported.
 
 ### fn spec.vault.auth.kubernetes.secretRef.withKey
 
@@ -623,7 +623,7 @@ Name of the resource being referred to. More info: https://kubernetes.io/docs/co
 
 ## obj spec.vault.auth.tokenSecretRef
 
-
+TokenSecretRef authenticates with Vault by presenting a token.
 
 ### fn spec.vault.auth.tokenSecretRef.withKey
 
@@ -655,7 +655,7 @@ Zone is the Venafi Policy Zone to use for this issuer. All requests made to the 
 
 ## obj spec.venafi.cloud
 
-
+Cloud specifies the Venafi cloud configuration settings. Only one of TPP or Cloud may be specified.
 
 ### fn spec.venafi.cloud.withUrl
 
@@ -667,7 +667,7 @@ URL is the base URL for Venafi Cloud. Defaults to "https://api.venafi.cloud/v1".
 
 ## obj spec.venafi.cloud.apiTokenSecretRef
 
-
+APITokenSecretRef is a secret key selector for the Venafi Cloud API token.
 
 ### fn spec.venafi.cloud.apiTokenSecretRef.withKey
 

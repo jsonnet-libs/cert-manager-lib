@@ -452,11 +452,11 @@ Name of the resource being referred to.
 
 ## obj spec.solver
 
-
+Contains the domain solving configuration that should be used to solve this challenge resource.
 
 ## obj spec.solver.dns01
 
-
+Configures cert-manager to attempt to complete authorizations by performing the DNS01 challenge flow.
 
 ### fn spec.solver.dns01.withCnameStrategy
 
@@ -468,7 +468,7 @@ CNAMEStrategy configures how the DNS01 provider should handle CNAME records when
 
 ## obj spec.solver.dns01.acmeDNS
 
-
+Use the 'ACME DNS' (https://github.com/joohoi/acme-dns) API to manage DNS01 challenge records.
 
 ### fn spec.solver.dns01.acmeDNS.withHost
 
@@ -480,7 +480,7 @@ withHost(host)
 
 ## obj spec.solver.dns01.acmeDNS.accountSecretRef
 
-
+A reference to a specific 'key' within a Secret resource. In some instances, `key` is a required field.
 
 ### fn spec.solver.dns01.acmeDNS.accountSecretRef.withKey
 
@@ -500,7 +500,7 @@ Name of the resource being referred to. More info: https://kubernetes.io/docs/co
 
 ## obj spec.solver.dns01.akamai
 
-
+Use the Akamai DNS zone management API to manage DNS01 challenge records.
 
 ### fn spec.solver.dns01.akamai.withServiceConsumerDomain
 
@@ -572,7 +572,7 @@ Name of the resource being referred to. More info: https://kubernetes.io/docs/co
 
 ## obj spec.solver.dns01.azureDNS
 
-
+Use the Microsoft Azure DNS API to manage DNS01 challenge records.
 
 ### fn spec.solver.dns01.azureDNS.withClientID
 
@@ -740,7 +740,7 @@ Use the DigitalOcean DNS API to manage DNS01 challenge records.
 
 ## obj spec.solver.dns01.digitalocean.tokenSecretRef
 
-
+A reference to a specific 'key' within a Secret resource. In some instances, `key` is a required field.
 
 ### fn spec.solver.dns01.digitalocean.tokenSecretRef.withKey
 
@@ -844,7 +844,7 @@ Role is a Role ARN which the Route53 provider will assume using either the expli
 
 ## obj spec.solver.dns01.route53.secretAccessKeySecretRef
 
-
+The SecretAccessKey is used for authentication. If not set we fall-back to using env vars, shared credentials file or AWS Instance metadata https://docs.aws.amazon.com/sdk-for-go/v1/developer-guide/configuring-sdk.html#specifying-credentials
 
 ### fn spec.solver.dns01.route53.secretAccessKeySecretRef.withKey
 
@@ -892,11 +892,11 @@ The name of the solver to use, as defined in the webhook provider implementation
 
 ## obj spec.solver.http01
 
-
+Configures cert-manager to attempt to complete authorizations by performing the HTTP01 challenge flow. It is not possible to obtain certificates for wildcard domain names (e.g. `*.example.com`) using the HTTP01 challenge mechanism.
 
 ## obj spec.solver.http01.ingress
 
-
+The ingress based HTTP01 challenge solver will solve challenges by creating or modifying Ingress resources in order to route requests for '/.well-known/acme-challenge/XYZ' to 'challenge solver' pods that are provisioned by cert-manager for each Challenge to be completed.
 
 ### fn spec.solver.http01.ingress.withClass
 
@@ -924,11 +924,11 @@ Optional service type for Kubernetes solver service
 
 ## obj spec.solver.http01.ingress.ingressTemplate
 
-
+Optional ingress template used to configure the ACME challenge solver ingress used for HTTP01 challenges
 
 ## obj spec.solver.http01.ingress.ingressTemplate.metadata
 
-
+ObjectMeta overrides for the ingress used to solve HTTP01 challenges. Only the 'labels' and 'annotations' fields may be set. If labels or annotations overlap with in-built values, the values here will override the in-built values.
 
 ### fn spec.solver.http01.ingress.ingressTemplate.metadata.withAnnotations
 
@@ -972,7 +972,7 @@ Optional pod template used to configure the ACME challenge solver pods used for 
 
 ## obj spec.solver.http01.ingress.podTemplate.metadata
 
-
+ObjectMeta overrides for the pod used to solve HTTP01 challenges. Only the 'labels' and 'annotations' fields may be set. If labels or annotations overlap with in-built values, the values here will override the in-built values.
 
 ### fn spec.solver.http01.ingress.podTemplate.metadata.withAnnotations
 
@@ -1012,7 +1012,7 @@ Labels that should be added to the created ACME HTTP01 solver pods.
 
 ## obj spec.solver.http01.ingress.podTemplate.spec
 
-
+PodSpec defines overrides for the HTTP01 challenge solver pod. Only the 'priorityClassName', 'nodeSelector', 'affinity', 'serviceAccountName' and 'tolerations' fields are supported currently. All other fields will be ignored.
 
 ### fn spec.solver.http01.ingress.podTemplate.spec.withNodeSelector
 
@@ -1068,11 +1068,11 @@ If specified, the pod's tolerations.
 
 ## obj spec.solver.http01.ingress.podTemplate.spec.affinity
 
-
+If specified, the pod's scheduling constraints
 
 ## obj spec.solver.http01.ingress.podTemplate.spec.affinity.nodeAffinity
 
-
+Describes node affinity scheduling rules for the pod.
 
 ### fn spec.solver.http01.ingress.podTemplate.spec.affinity.nodeAffinity.withPreferredDuringSchedulingIgnoredDuringExecution
 
@@ -1094,7 +1094,7 @@ The scheduler will prefer to schedule pods to nodes that satisfy the affinity ex
 
 ## obj spec.solver.http01.ingress.podTemplate.spec.affinity.nodeAffinity.requiredDuringSchedulingIgnoredDuringExecution
 
-
+If the affinity requirements specified by this field are not met at scheduling time, the pod will not be scheduled onto the node. If the affinity requirements specified by this field cease to be met at some point during pod execution (e.g. due to an update), the system may or may not try to eventually evict the pod from its node.
 
 ### fn spec.solver.http01.ingress.podTemplate.spec.affinity.nodeAffinity.requiredDuringSchedulingIgnoredDuringExecution.withNodeSelectorTerms
 
@@ -1116,7 +1116,7 @@ Required. A list of node selector terms. The terms are ORed.
 
 ## obj spec.solver.http01.ingress.podTemplate.spec.affinity.podAffinity
 
-
+Describes pod affinity scheduling rules (e.g. co-locate this pod in the same node, zone, etc. as some other pod(s)).
 
 ### fn spec.solver.http01.ingress.podTemplate.spec.affinity.podAffinity.withPreferredDuringSchedulingIgnoredDuringExecution
 
@@ -1156,7 +1156,7 @@ If the affinity requirements specified by this field are not met at scheduling t
 
 ## obj spec.solver.http01.ingress.podTemplate.spec.affinity.podAntiAffinity
 
-
+Describes pod anti-affinity scheduling rules (e.g. avoid putting this pod in the same node, zone, etc. as some other pod(s)).
 
 ### fn spec.solver.http01.ingress.podTemplate.spec.affinity.podAntiAffinity.withPreferredDuringSchedulingIgnoredDuringExecution
 

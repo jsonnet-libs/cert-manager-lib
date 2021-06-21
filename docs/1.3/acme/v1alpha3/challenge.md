@@ -424,7 +424,7 @@ Wildcard will be true if this challenge is for a wildcard identifier, for exampl
 
 ## obj spec.issuerRef
 
-
+IssuerRef references a properly configured ACME-type Issuer which should be used to create this Challenge. If the Issuer does not exist, processing will be retried. If the Issuer is not an 'ACME' Issuer, an error will be returned and the Challenge will be marked as failed.
 
 ### fn spec.issuerRef.withGroup
 
@@ -452,11 +452,11 @@ Name of the resource being referred to.
 
 ## obj spec.solver
 
-
+Solver contains the domain solving configuration that should be used to solve this challenge resource.
 
 ## obj spec.solver.dns01
 
-
+Configures cert-manager to attempt to complete authorizations by performing the DNS01 challenge flow.
 
 ### fn spec.solver.dns01.withCnameStrategy
 
@@ -468,7 +468,7 @@ CNAMEStrategy configures how the DNS01 provider should handle CNAME records when
 
 ## obj spec.solver.dns01.acmedns
 
-
+Use the 'ACME DNS' (https://github.com/joohoi/acme-dns) API to manage DNS01 challenge records.
 
 ### fn spec.solver.dns01.acmedns.withHost
 
@@ -480,7 +480,7 @@ withHost(host)
 
 ## obj spec.solver.dns01.acmedns.accountSecretRef
 
-
+A reference to a specific 'key' within a Secret resource. In some instances, `key` is a required field.
 
 ### fn spec.solver.dns01.acmedns.accountSecretRef.withKey
 
@@ -500,7 +500,7 @@ Name of the resource being referred to. More info: https://kubernetes.io/docs/co
 
 ## obj spec.solver.dns01.akamai
 
-
+Use the Akamai DNS zone management API to manage DNS01 challenge records.
 
 ### fn spec.solver.dns01.akamai.withServiceConsumerDomain
 
@@ -664,7 +664,7 @@ withProject(project)
 
 ## obj spec.solver.dns01.clouddns.serviceAccountSecretRef
 
-
+A reference to a specific 'key' within a Secret resource. In some instances, `key` is a required field.
 
 ### fn spec.solver.dns01.clouddns.serviceAccountSecretRef.withKey
 
@@ -684,7 +684,7 @@ Name of the resource being referred to. More info: https://kubernetes.io/docs/co
 
 ## obj spec.solver.dns01.cloudflare
 
-
+Use the Cloudflare API to manage DNS01 challenge records.
 
 ### fn spec.solver.dns01.cloudflare.withEmail
 
@@ -696,7 +696,7 @@ Email of the account, only required when using API key based authentication.
 
 ## obj spec.solver.dns01.cloudflare.apiKeySecretRef
 
-
+API key to use to authenticate with Cloudflare. Note: using an API token to authenticate is now the recommended method as it allows greater control of permissions.
 
 ### fn spec.solver.dns01.cloudflare.apiKeySecretRef.withKey
 
@@ -716,7 +716,7 @@ Name of the resource being referred to. More info: https://kubernetes.io/docs/co
 
 ## obj spec.solver.dns01.cloudflare.apiTokenSecretRef
 
-
+API token used to authenticate with Cloudflare.
 
 ### fn spec.solver.dns01.cloudflare.apiTokenSecretRef.withKey
 
@@ -736,7 +736,7 @@ Name of the resource being referred to. More info: https://kubernetes.io/docs/co
 
 ## obj spec.solver.dns01.digitalocean
 
-
+Use the DigitalOcean DNS API to manage DNS01 challenge records.
 
 ## obj spec.solver.dns01.digitalocean.tokenSecretRef
 
@@ -760,7 +760,7 @@ Name of the resource being referred to. More info: https://kubernetes.io/docs/co
 
 ## obj spec.solver.dns01.rfc2136
 
-
+Use RFC2136 ("Dynamic Updates in the Domain Name System") (https://datatracker.ietf.org/doc/rfc2136/) to manage DNS01 challenge records.
 
 ### fn spec.solver.dns01.rfc2136.withNameserver
 
@@ -808,7 +808,7 @@ Name of the resource being referred to. More info: https://kubernetes.io/docs/co
 
 ## obj spec.solver.dns01.route53
 
-
+Use the AWS Route53 API to manage DNS01 challenge records.
 
 ### fn spec.solver.dns01.route53.withAccessKeyID
 
@@ -864,7 +864,7 @@ Name of the resource being referred to. More info: https://kubernetes.io/docs/co
 
 ## obj spec.solver.dns01.webhook
 
-
+Configure an external webhook based DNS01 challenge solver to manage DNS01 challenge records.
 
 ### fn spec.solver.dns01.webhook.withConfig
 
@@ -896,7 +896,7 @@ Configures cert-manager to attempt to complete authorizations by performing the 
 
 ## obj spec.solver.http01.ingress
 
-
+The ingress based HTTP01 challenge solver will solve challenges by creating or modifying Ingress resources in order to route requests for '/.well-known/acme-challenge/XYZ' to 'challenge solver' pods that are provisioned by cert-manager for each Challenge to be completed.
 
 ### fn spec.solver.http01.ingress.withClass
 
@@ -928,7 +928,7 @@ Optional ingress template used to configure the ACME challenge solver ingress us
 
 ## obj spec.solver.http01.ingress.ingressTemplate.metadata
 
-
+ObjectMeta overrides for the ingress used to solve HTTP01 challenges. Only the 'labels' and 'annotations' fields may be set. If labels or annotations overlap with in-built values, the values here will override the in-built values.
 
 ### fn spec.solver.http01.ingress.ingressTemplate.metadata.withAnnotations
 
@@ -972,7 +972,7 @@ Optional pod template used to configure the ACME challenge solver pods used for 
 
 ## obj spec.solver.http01.ingress.podTemplate.metadata
 
-
+ObjectMeta overrides for the pod used to solve HTTP01 challenges. Only the 'labels' and 'annotations' fields may be set. If labels or annotations overlap with in-built values, the values here will override the in-built values.
 
 ### fn spec.solver.http01.ingress.podTemplate.metadata.withAnnotations
 
@@ -1012,7 +1012,7 @@ Labels that should be added to the created ACME HTTP01 solver pods.
 
 ## obj spec.solver.http01.ingress.podTemplate.spec
 
-
+PodSpec defines overrides for the HTTP01 challenge solver pod. Only the 'priorityClassName', 'nodeSelector', 'affinity', 'serviceAccountName' and 'tolerations' fields are supported currently. All other fields will be ignored.
 
 ### fn spec.solver.http01.ingress.podTemplate.spec.withNodeSelector
 
@@ -1094,7 +1094,7 @@ The scheduler will prefer to schedule pods to nodes that satisfy the affinity ex
 
 ## obj spec.solver.http01.ingress.podTemplate.spec.affinity.nodeAffinity.requiredDuringSchedulingIgnoredDuringExecution
 
-
+If the affinity requirements specified by this field are not met at scheduling time, the pod will not be scheduled onto the node. If the affinity requirements specified by this field cease to be met at some point during pod execution (e.g. due to an update), the system may or may not try to eventually evict the pod from its node.
 
 ### fn spec.solver.http01.ingress.podTemplate.spec.affinity.nodeAffinity.requiredDuringSchedulingIgnoredDuringExecution.withNodeSelectorTerms
 
